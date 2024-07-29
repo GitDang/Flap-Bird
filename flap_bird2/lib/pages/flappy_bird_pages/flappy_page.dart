@@ -10,7 +10,7 @@ class FlappyBirdPage extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _FlappyBirdPage createState()=> _FlappyBirdPage();
+  _FlappyBirdPage createState() => _FlappyBirdPage();
 }
 
 class _FlappyBirdPage extends State<FlappyBirdPage> {
@@ -65,7 +65,7 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
         });
       }
 
-      if(barrierX[i] == -1) {
+      if (barrierX[i] == -1) {
         setState(() {
           score++;
         });
@@ -75,12 +75,12 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
 
   void resetGame() {
     Navigator.pop(context);
-    if(score >= highScore) {
-        setState(() {
-          highScore = score;
-        });
-      }
-      
+    if (score >= highScore) {
+      setState(() {
+        highScore = score;
+      });
+    }
+
     setState(() {
       score = 0;
       birdY = 0;
@@ -97,14 +97,14 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: Colors.brown,
+            backgroundColor: const Color.fromARGB(255, 21, 138, 79),
             title: const Center(
               child: Text(
                 "G A M E  O V E R",
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            actions: [
+            actions: <Widget>[
               GestureDetector(
                 onTap: resetGame,
                 child: ClipRRect(
@@ -114,7 +114,7 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
                     color: Colors.white,
                     child: const Text(
                       'PLAY AGAIN',
-                      style: TextStyle(color: Colors.brown),
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -153,15 +153,12 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
     return GestureDetector(
       onTap: gameHasStarted ? jump : startGame,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flap Bird'),
-        ),
         body: Column(
           children: [
             Expanded(
               flex: 3,
               child: Container(
-                color: Colors.blue,
+                color: const Color.fromARGB(255, 73, 102, 126),
                 child: Center(
                   child: Stack(
                     children: [
@@ -209,13 +206,9 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
                 ),
               ),
             ),
-            Container(
-              height: 15,
-              color: Colors.green,
-            ),
             Expanded(
               child: Container(
-                color: Colors.brown,
+                color: const Color.fromARGB(255, 21, 138, 79),
                 child: Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -225,13 +218,14 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
                         children: [
                           Text(
                             '$score',
-                            style: const TextStyle(color: Colors.white, fontSize: 35),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 35),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
                           const Text(
-                            'S C O R E',
+                            'POINT',
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ],
@@ -241,13 +235,14 @@ class _FlappyBirdPage extends State<FlappyBirdPage> {
                         children: [
                           Text(
                             '$highScore',
-                            style: const TextStyle(color: Colors.white, fontSize: 35),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 35),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
                           const Text(
-                            'B E S T',
+                            'HIGHEST',
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ],
